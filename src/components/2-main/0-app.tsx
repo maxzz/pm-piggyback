@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/shadcn/button';
 
 export function App() {
     return (
