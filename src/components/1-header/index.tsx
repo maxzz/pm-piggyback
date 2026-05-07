@@ -1,7 +1,6 @@
-
 export function Header() {
     return (
-        <header className="py-1 border-b border-border bg-background flex items-center justify-between">
+        <header className="px-3 py-2 border-b border-border bg-background flex items-center justify-between">
             <div>
                 pm-piggyback
             </div>
@@ -9,4 +8,3 @@ export function Header() {
         </header>
     );
 }
-
