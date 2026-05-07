@@ -55,13 +55,18 @@ function SelectTrigger({
   )
 }
 
+type SelectContentProps = React.ComponentProps<typeof SelectPrimitive.Content> & {
+    buttonClasses?: string; // up/down button classes
+};
+
 function SelectContent({
   className,
   children,
   position = "item-aligned",
   align = "center",
+  buttonClasses,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content>) {
+}: SelectContentProps) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -72,7 +77,8 @@ function SelectContent({
         align={align}
         {...props}
       >
-        <SelectScrollUpButton />
+        <SelectScrollUpButton className={buttonClasses} />
+
         <SelectPrimitive.Viewport
           data-position={position}
           className={cn(
@@ -82,7 +88,9 @@ function SelectContent({
         >
           {children}
         </SelectPrimitive.Viewport>
-        <SelectScrollDownButton />
+
+        <SelectScrollDownButton className={buttonClasses} />
+
       </SelectPrimitive.Content>
     </SelectPrimitive.Portal>
   )
@@ -101,11 +109,24 @@ function SelectLabel({
   )
 }
 
+const selectItemLeftClasses = "pl-8 pr-2";
+const selectItemRightClasses = "pl-2 pr-8";
+
+const selectIndiLeftClasses = "left-2";
+const selectIndiRightClasses = "right-2";
+
+type SelectItemProps = React.ComponentProps<typeof SelectPrimitive.Item> & {
+    indicatorFirst?: boolean;
+};
+
 function SelectItem({
   className,
   children,
+  indicatorFirst,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Item>) {
+}: SelectItemProps) {
+  const itemClasses = indicatorFirst ? selectItemLeftClasses : selectItemRightClasses;
+  const indiClasses = indicatorFirst ? selectIndiLeftClasses : selectIndiRightClasses;
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
@@ -115,7 +136,7 @@ function SelectItem({
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+      <span className={cn("pointer-events-none absolute right-2 flex size-4 items-center justify-center", indiClasses)}>
         <SelectPrimitive.ItemIndicator>
           <CheckIcon className="pointer-events-none" />
         </SelectPrimitive.ItemIndicator>
