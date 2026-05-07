@@ -15,9 +15,9 @@
     "aliases": {
         "components": "@/components",
         "utils": "@/utils/classnames",
-        "ui": "@/components/ui/shadcn",
+        "ui": "@/ui/shadcn",
         "lib": "@/utils",
-        "hooks": "@/utils/hooks"
+        "hooks": "@/utils/util-hooks"
     },
     "menuColor": "default",
     "menuAccent": "subtle",
