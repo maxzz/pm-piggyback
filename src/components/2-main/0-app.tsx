@@ -1,11 +1,11 @@
-import { ArrowRight } from 'lucide-react';
-
-import { Button } from '@/components/ui/shadcn/button';
+import { Header } from '../1-header';
 
 export function App() {
     return (
-        <main className="flex min-h-screen items-center justify-center bg-background px-6 py-12">
-            11
+        <main className="min-h-screen text-xs bg-background grid grid-rows-[auto_1fr_auto]">
+            <Header />
+            <div className="">2</div>
+            <div className="">3</div>
         </main>
     );
 }
