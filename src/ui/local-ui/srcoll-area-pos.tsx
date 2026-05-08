@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react"; //copilot: 'How to preserve scroll position of shadcn ScrollArea'
-import { ScrollArea2 } from "@/ui/shadcn";
+import { ScrollArea2 } from "../shadcn/scroll-area";
 
 interface PreserveScrollAreaProps {
     children: React.ReactNode;
