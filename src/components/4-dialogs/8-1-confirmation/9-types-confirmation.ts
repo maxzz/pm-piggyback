@@ -7,7 +7,7 @@ export type ConfirmationUi = {
     message: ReactNode;
     buttonOk: string;
     buttonCancel?: string;
-    isDafaultOk: boolean;
+    isDafaultOk?: boolean;
 };
 
 export type ConfirmationData = {
