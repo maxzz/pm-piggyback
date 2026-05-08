@@ -1,7 +1,7 @@
 {
     "name": "pm-piggyback",
     "private": true,
-    "version": "0.0.3",
+    "version": "0.26.1",
     "type": "module",
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.11",
