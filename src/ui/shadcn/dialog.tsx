@@ -58,18 +58,19 @@ bg-background \
 data-open:animate-in \
 data-open:fade-in-0 \
 data-open:zoom-in-95 \
-1data-open:slide-in-from-left-1/2 \
-1data-open:slide-in-from-top-[48%] \
 \
 data-closed:animate-out \
 data-closed:fade-out-0 \
 data-closed:zoom-out-95 \
-1data-closed:slide-out-to-left-1/2 \
-1data-closed:slide-out-to-top-[48%] \
 \
 border sm:rounded-lg shadow-lg \
 duration-200 \
 grid gap-4";
+//tm:
+//data-open:slide-in-from-left-1/2 \
+//data-open:slide-in-from-top-[48%] \
+//data-closed:slide-out-to-left-1/2 \
+//data-closed:slide-out-to-top-[48%] \
 //original: "
 // fixed top-1/2 left-1/2 z-50 
 // grid 
