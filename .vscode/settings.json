@@ -1,0 +1,26 @@
+{
+    "tailwindCSS.experimental.classRegex": [
+        ["Classes \\=([^;]*);", "'([^']*)'"],
+        ["Classes \\=([^;]*);", "\"([^\"]*)\""],
+        ["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"],
+        
+        ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+        ["classNames\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+        
+        "\\b[A-Za-z_$][\\w$]*Classes\\s*=\\s*[\"'`]([^\"'`]*)[\"'`]"
+    ],
+    "files.associations": {
+        "*.json5": "jsonc"
+    },
+    
+    // 'how to debug the electron-vite process with vscode'
+    "debug.javascript.terminalOptions": {
+        "resolveSourceMapLocations": [
+            "${workspaceFolder}/**",
+            "**/node_modules/**",
+            
+            // "! **/node_modules/**",
+            "**/node_modules/.vite-temp/**"
+        ]
+    }
+}
