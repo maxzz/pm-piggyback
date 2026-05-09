@@ -17,6 +17,14 @@ function DialogPortal({ ...rest }: React.ComponentProps<typeof DialogPrimitive.P
     return <DialogPrimitive.Portal data-slot="dialog-portal" {...rest} />;
 }
 
+/**
+ * @example
+ * <DialogClose asChild>
+ *     <Button variant="outline">
+ *         Close
+ *     </Button>
+ * </DialogClose>
+ */
 function DialogClose({ ...rest }: React.ComponentProps<typeof DialogPrimitive.Close>) {
     return <DialogPrimitive.Close data-slot="dialog-close" {...rest} />;
 }
@@ -47,17 +55,17 @@ w-full md:w-full max-w-lg \
 \
 bg-background \
 \
-data-[state=open]:animate-in \
-data-[state=open]:fade-in-0 \
-data-[state=open]:zoom-in-95 \
-data-[state=open]:slide-in-from-left-1/2 \
-data-[state=open]:slide-in-from-top-[48%] \
+data-open:animate-in \
+data-open:fade-in-0 \
+data-open:zoom-in-95 \
+1data-open:slide-in-from-left-1/2 \
+1data-open:slide-in-from-top-[48%] \
 \
-data-[state=closed]:animate-out \
-data-[state=closed]:fade-out-0 \
-data-[state=closed]:zoom-out-95 \
-data-[state=closed]:slide-out-to-left-1/2 \
-data-[state=closed]:slide-out-to-top-[48%] \
+data-closed:animate-out \
+data-closed:fade-out-0 \
+data-closed:zoom-out-95 \
+1data-closed:slide-out-to-left-1/2 \
+1data-closed:slide-out-to-top-[48%] \
 \
 border sm:rounded-lg shadow-lg \
 duration-200 \
@@ -78,9 +86,11 @@ grid gap-4";
 // ring-1 ring-foreground/10 duration-100 
 // outline-none 
 // sm:max-w-sm 
+//
 // data-open:animate-in 
 // data-open:fade-in-0 
 // data-open:zoom-in-95 
+//
 // data-closed:animate-out 
 // data-closed:fade-out-0 
 // data-closed:zoom-out-95
