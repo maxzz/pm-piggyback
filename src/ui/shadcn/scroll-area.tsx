@@ -1,8 +1,8 @@
-import { forwardRef, type ElementRef, type ComponentPropsWithoutRef } from "react"; //01.17.26
+import { forwardRef, type ElementRef, type ComponentPropsWithoutRef, type ComponentProps } from "react"; //01.17.26
 import { ScrollArea as Prim } from "radix-ui"
 import { cn } from "@/utils";
 
-export type ScrollAreaProps = ComponentPropsWithoutRef<typeof Prim.Root> & {
+export type ScrollAreaProps = ComponentProps<typeof Prim.Root> & {
     horizontal?: boolean;           // adds horizontal scrollbar
     fullHeight?: boolean;           // sets ScrollArea height to 100%
     fixedWidth?: boolean;           // prevents ScrollArea width from growing; i.e. removes display: table from Prim.Viewport
@@ -29,8 +29,8 @@ const fullHeightClasses = "[&_[data-radix-scroll-area-viewport]>div]:h-full";
 const fixedWidthClasses = "[&_[data-radix-scroll-area-viewport]>div]:block!"; // to block: display: table
 const parentContentWidthClasses = "**:data-radix-scroll-area-content:min-w-0!";
 
-const ScrollArea = forwardRef<ElementRef<typeof Prim.Root>, ScrollAreaProps>(
-    ({ className, children, horizontal, fixedWidth, fullHeight, parentContentWidth, viewportClassName, viewportProps, ...rest }, ref) => (
+export function ScrollArea({ className, children, horizontal, fixedWidth, fullHeight, parentContentWidth, viewportClassName, viewportProps, ref, ...rest }: ScrollAreaProps) {
+    return (
         <Prim.Root ref={ref}
             className={cn(
                 "relative overflow-hidden",
@@ -50,15 +50,14 @@ const ScrollArea = forwardRef<ElementRef<typeof Prim.Root>, ScrollAreaProps>(
 
             <Prim.Corner />
         </Prim.Root>
-    )
-);
-ScrollArea.displayName = Prim.Root.displayName;
+    );
+}
 
 /**
  * ScrollArea2 - The same as ScrollArea but with ref on the viewport element to have ability to preserve scroll position
  */
-const ScrollArea2 = forwardRef<ElementRef<typeof Prim.Root>, ScrollAreaProps>(
-    ({ className, children, horizontal, fixedWidth, fullHeight, parentContentWidth, ...rest }, ref) => (
+export function ScrollArea2({ className, children, horizontal, fixedWidth, fullHeight, parentContentWidth, ref, ...rest }: ScrollAreaProps) {
+    return (
         <Prim.Root
             className={cn(
                 "relative overflow-hidden",
@@ -78,14 +77,12 @@ const ScrollArea2 = forwardRef<ElementRef<typeof Prim.Root>, ScrollAreaProps>(
 
             <Prim.Corner />
         </Prim.Root>
-    )
-);
-ScrollArea2.displayName = Prim.Root.displayName;
+    );
+}
 
-const ScrollBar = forwardRef<ElementRef<typeof Prim.ScrollAreaScrollbar>, ComponentPropsWithoutRef<typeof Prim.ScrollAreaScrollbar>>(
-    ({ className, orientation = "vertical", ...rest }, ref) => (
+export function ScrollBar({ className, orientation = "vertical", ...rest }: ComponentProps<typeof Prim.ScrollAreaScrollbar>) {
+    return (
         <Prim.ScrollAreaScrollbar
-            ref={ref}
             orientation={orientation}
             className={cn(
                 "flex touch-none select-none transition-colors",
@@ -97,8 +94,5 @@ const ScrollBar = forwardRef<ElementRef<typeof Prim.ScrollAreaScrollbar>, Compon
         >
             <Prim.ScrollAreaThumb className={cn("relative rounded-full bg-border", orientation === "vertical" && "flex-1")} />
         </Prim.ScrollAreaScrollbar>
-    )
-);
-ScrollBar.displayName = Prim.ScrollAreaScrollbar.displayName;
-
-export { ScrollArea, ScrollArea2, ScrollBar };
+    );
+}
