@@ -47,7 +47,4 @@ aria-[orientation=horizontal]:after:translate-x-0 \
 aria-[orientation=horizontal]:after:-translate-y-1/2 \
 [&[aria-orientation=horizontal]>div]:rotate-90 \
 \
-flex \
-items-center \
-justify-center \
-";
+flex items-center justify-center";
