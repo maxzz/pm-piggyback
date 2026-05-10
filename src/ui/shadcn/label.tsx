@@ -11,15 +11,15 @@ export function Label({ className, ...rest }: ComponentProps<typeof LabelPrimiti
 }
 
 const labelClasses: string = "\
-text-sm \
 font-medium \
+text-xs \
 leading-none \
+\
 group-data-[disabled=true]:pointer-events-none \
 group-data-[disabled=true]:opacity-50 \
+\
 peer-disabled:cursor-not-allowed \
 peer-disabled:opacity-50 \
+\
 select-none \
-flex \
-items-center \
-gap-2 \
-";
+flex items-center gap-2";
