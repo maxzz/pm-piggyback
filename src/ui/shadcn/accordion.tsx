@@ -47,12 +47,10 @@ export function AccordionContent({ className, children, ...rest }: ComponentProp
 }
 
 const accordionTriggerClasses = "group/accordion-trigger \
-relative \
-flex-1 \
-py-2.5 \
-text-left \
-text-xs \
+relative flex-1 py-2.5 \
 font-medium \
+text-xs \
+text-left \
 transition-all \
 outline-none \
 hover:underline \
@@ -70,8 +68,7 @@ disabled:opacity-50 \
 **:data-[slot=accordion-trigger-icon]:text-muted-foreground \
 \
 rounded-lg \
-border \
-border-transparent \
+border border-transparent \
 flex items-start justify-between";
 
 const accordionContentClasses = "\
