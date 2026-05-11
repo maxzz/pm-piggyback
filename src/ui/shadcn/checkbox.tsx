@@ -6,7 +6,7 @@ import { Checkbox as CheckboxPrimitive } from "radix-ui";
 
 export function Checkbox({ className, ...rest }: ComponentProps<typeof CheckboxPrimitive.Root>) {
     return (
-        <CheckboxPrimitive.Root data-slot="checkbox" className={cn(defaultCheckboxClasses, className)} {...rest}>
+        <CheckboxPrimitive.Root data-slot="checkbox" className={cn(checkboxClasses, className)} {...rest}>
 
             <CheckboxPrimitive.Indicator data-slot="checkbox-indicator" className="grid place-content-center text-current transition-none [&>svg]:size-3.5">
                 <CheckIcon />
@@ -16,10 +16,11 @@ export function Checkbox({ className, ...rest }: ComponentProps<typeof CheckboxP
     );
 }
 
-const defaultCheckboxClasses = "\
+const checkboxClasses = "\
 peer relative shrink-0 size-4 \
 \
 group-has-disabled/field:opacity-50 \
+\
 transition-colors \
 \
 dark:bg-input/30 \
