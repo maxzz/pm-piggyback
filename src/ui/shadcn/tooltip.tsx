@@ -3,9 +3,7 @@ import { cn } from "@/utils/classnames";
 import { Tooltip as TooltipPrimitive } from "radix-ui";
 
 export function TooltipProvider({ delayDuration = 0, ...rest }: ComponentProps<typeof TooltipPrimitive.Provider>) {
-    return (
-        <TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...rest} />
-    );
+    return <TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...rest} />;
 }
 
 export function Tooltip({ ...rest }: ComponentProps<typeof TooltipPrimitive.Root>) {
@@ -19,22 +17,18 @@ export function TooltipTrigger({ ...rest }: ComponentProps<typeof TooltipPrimiti
 export function TooltipContent({ className, sideOffset = 0, children, ...rest }: ComponentProps<typeof TooltipPrimitive.Content>) {
     return (
         <TooltipPrimitive.Portal>
-            <TooltipPrimitive.Content
-                data-slot="tooltip-content"
-                sideOffset={sideOffset}
-                className={cn(tooltipContentClasses, className)}
-                {...rest}
-            >
+
+            <TooltipPrimitive.Content data-slot="tooltip-content" sideOffset={sideOffset} className={cn(contentClasses, className)} {...rest}>
                 {children}
                 <TooltipPrimitive.Arrow className="z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs bg-foreground fill-foreground" />
             </TooltipPrimitive.Content>
+
         </TooltipPrimitive.Portal>
     );
 }
 
-const tooltipContentClasses = "\
-px-3 py-1.5 w-fit max-w-xs text-xs \
-origin-(--radix-tooltip-content-transform-origin) \
+const contentClasses = "\
+px-3 py-1.5 w-fit max-w-xs text-xs origin-(--radix-tooltip-content-transform-origin) \
 \
 text-background \
 bg-foreground \

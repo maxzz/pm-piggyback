@@ -10,7 +10,7 @@ export function RadioGroup({ className, ...rest }: ComponentProps<typeof RadioGr
 
 export function RadioGroupItem({ className, ...rest }: ComponentProps<typeof RadioGroupPrimitive.Item>) {
     return (
-        <RadioGroupPrimitive.Item data-slot="radio-group-item" className={cn(radioGroupItemClasses, className)} {...rest}>
+        <RadioGroupPrimitive.Item data-slot="radio-group-item" className={cn(itemClasses, className)} {...rest}>
             <RadioGroupPrimitive.Indicator data-slot="radio-group-indicator" className="size-4 flex items-center justify-center">
                 <span className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-foreground" />
             </RadioGroupPrimitive.Indicator>
@@ -18,7 +18,7 @@ export function RadioGroupItem({ className, ...rest }: ComponentProps<typeof Rad
     );
 }
 
-const radioGroupItemClasses = "\
+const itemClasses = "\
 group/radio-group-item peer relative shrink-0 aspect-square size-4 \
 \
 after:absolute \

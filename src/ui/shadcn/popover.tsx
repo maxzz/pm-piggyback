@@ -18,14 +18,14 @@ export function PopoverContent({ className, align = "center", sideOffset = 4, ..
                 data-slot="popover-content"
                 align={align}
                 sideOffset={sideOffset}
-                className={cn(popoverContentClasses, className)}
+                className={cn(contentClasses, className)}
                 {...rest}
             />
         </PopoverPrimitive.Portal>
     );
 }
 
-const popoverContentClasses = "\
+const contentClasses = "\
 p-2.5 w-72 \
 text-xs \
 origin-(--radix-popover-content-transform-origin) \
@@ -59,31 +59,13 @@ export function PopoverAnchor({ ...rest }: ComponentProps<typeof PopoverPrimitiv
 }
 
 export function PopoverHeader({ className, ...rest }: ComponentProps<"div">) {
-    return (
-        <div
-            data-slot="popover-header"
-            className={cn("flex flex-col gap-0.5 text-sm", className)}
-            {...rest}
-        />
-    );
+    return <div data-slot="popover-header" className={cn("text-xs flex flex-col gap-0.5", className)} {...rest} />;
 }
 
 export function PopoverTitle({ className, ...rest }: ComponentProps<"h2">) {
-    return (
-        <div
-            data-slot="popover-title"
-            className={cn("font-medium", className)}
-            {...rest}
-        />
-    );
+    return <div data-slot="popover-title" className={cn("font-medium", className)} {...rest} />;
 }
 
 export function PopoverDescription({ className, ...rest }: ComponentProps<"p">) {
-    return (
-        <p
-            data-slot="popover-description"
-            className={cn("text-muted-foreground", className)}
-            {...rest}
-        />
-    );
+    return <p data-slot="popover-description" className={cn("text-muted-foreground", className)} {...rest} />;
 }

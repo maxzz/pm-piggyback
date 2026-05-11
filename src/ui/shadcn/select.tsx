@@ -8,22 +8,15 @@ export function Select({ ...rest }: ComponentProps<typeof SelectPrimitive.Root>)
 }
 
 export function SelectGroup({ className, ...rest }: ComponentProps<typeof SelectPrimitive.Group>) {
-    return (
-        <SelectPrimitive.Group
-            data-slot="select-group"
-            className={cn("scroll-my-1 p-1", className)}
-            {...rest}
-        />
-    );
+    return <SelectPrimitive.Group data-slot="select-group" className={cn("p-1 scroll-my-1", className)} {...rest} />;
 }
 
 export function SelectValue({ ...rest }: ComponentProps<typeof SelectPrimitive.Value>) {
     return <SelectPrimitive.Value data-slot="select-value" {...rest} />;
 }
 
-const selectTriggerClasses = "\
-pl-2.5 pr-2 py-2 w-fit \
-text-xs \
+const triggerClasses = "\
+pl-2.5 pr-2 py-2 w-fit text-xs \
 whitespace-nowrap \
 \
 bg-transparent \
@@ -60,18 +53,19 @@ data-[size=sm]:rounded-[min(var(--radius-md),10px)] \
 [&_svg]:shrink-0 \
 [&_svg:not([class*='size-'])]:size-4 \
 \
+rounded-lg \
+outline-none select-none \
 border \
 border-input \
-outline-none select-none \
-rounded-lg \
 flex items-center justify-between gap-1.5";
 
 export function SelectTrigger({ className, size = "default", children, ...rest }: ComponentProps<typeof SelectPrimitive.Trigger> & { size?: "sm" | "default"; }) {
     return (
-        <SelectPrimitive.Trigger data-slot="select-trigger" data-size={size} className={cn(selectTriggerClasses, className)} {...rest}>
+        <SelectPrimitive.Trigger data-slot="select-trigger" data-size={size} className={cn(triggerClasses, className)} {...rest}>
             {children}
+
             <SelectPrimitive.Icon asChild>
-                <ChevronDownIcon className="pointer-events-none size-4 text-muted-foreground" />
+                <ChevronDownIcon className="size-4 text-muted-foreground pointer-events-none" />
             </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
     );
@@ -81,19 +75,15 @@ type SelectContentProps = ComponentProps<typeof SelectPrimitive.Content> & {
     buttonClasses?: string; // up/down button classes
 };
 
-const selectContentClasses = "\
-relative \
-min-w-36 \
-max-h-(--radix-select-content-available-height) \
-origin-(--radix-select-content-transform-origin) \
+const contentClasses = "\
+relative min-w-36 max-h-(--radix-select-content-available-height) origin-(--radix-select-content-transform-origin) \
 \
 text-popover-foreground \
 bg-popover \
-ring-1 \
-ring-foreground/10 \
 duration-100 \
 \
 data-[align-trigger=true]:animate-none \
+\
 data-[side=bottom]:slide-in-from-top-2 \
 data-[side=left]:slide-in-from-right-2 \
 data-[side=right]:slide-in-from-left-2 \
@@ -107,14 +97,13 @@ data-closed:animate-out \
 data-closed:fade-out-0 \
 data-closed:zoom-out-95 \
 \
-rounded-lg \
-shadow-md \
+ring-1 \
+ring-foreground/10 \
+rounded-lg shadow-md \
 \
 overflow-x-hidden \
 overflow-y-auto \
-\
-z-50 \
-";
+z-50";
 
 export function SelectContent({ className, children, position = "item-aligned", align = "center", buttonClasses, ...rest }: SelectContentProps) {
     return (
@@ -122,7 +111,7 @@ export function SelectContent({ className, children, position = "item-aligned", 
             <SelectPrimitive.Content
                 data-slot="select-content"
                 data-align-trigger={position === "item-aligned"}
-                className={cn(selectContentClasses, position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1", className)}
+                className={cn(contentClasses, position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1", className)}
                 position={position}
                 align={align}
                 {...rest}
@@ -131,7 +120,7 @@ export function SelectContent({ className, children, position = "item-aligned", 
 
                 <SelectPrimitive.Viewport
                     data-position={position}
-                    className={cn("data-[position=popper]:h-(--radix-select-trigger-height) data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width)", position === "popper" && "")}
+                    className={cn("data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width) data-[position=popper]:h-(--radix-select-trigger-height)", position === "popper" && "")}
                 >
                     {children}
                 </SelectPrimitive.Viewport>
@@ -152,8 +141,8 @@ export function SelectLabel({ className, ...rest }: ComponentProps<typeof Select
 const selectItemClasses = "\
 relative pr-8 pl-1.5 py-1 w-full text-xs \
 \
-focus:bg-accent \
 focus:text-accent-foreground \
+focus:bg-accent \
 \
 not-data-[variant=destructive]:focus:**:text-accent-foreground \
 \
@@ -169,8 +158,7 @@ data-disabled:opacity-50 \
 *:[span]:last:gap-2 \
 \
 rounded-md \
-outline-hidden select-none \
-cursor-default \
+outline-hidden select-none cursor-default \
 flex items-center gap-1.5";
 
 const selectItemLeftClasses = "pl-8 pr-2";
@@ -189,7 +177,7 @@ export function SelectItem({ className, children, indicatorFirst, ...rest }: Sel
     return (
         <SelectPrimitive.Item data-slot="select-item" className={cn(selectItemClasses, itemClasses, className)} {...rest}>
 
-            <span className={cn("pointer-events-none absolute right-2 flex size-4 items-center justify-center", indiClasses)}>
+            <span className={cn("absolute right-2 size-4 pointer-events-none flex items-center justify-center", indiClasses)}>
                 <SelectPrimitive.ItemIndicator>
                     <CheckIcon className="pointer-events-none" />
                 </SelectPrimitive.ItemIndicator>
@@ -202,21 +190,13 @@ export function SelectItem({ className, children, indicatorFirst, ...rest }: Sel
 
 export function SelectSeparator({ className, ...rest }: ComponentProps<typeof SelectPrimitive.Separator>) {
     return (
-        <SelectPrimitive.Separator
-            data-slot="select-separator"
-            className={cn("pointer-events-none -mx-1 my-1 h-px bg-border", className)}
-            {...rest}
-        />
+        <SelectPrimitive.Separator data-slot="select-separator" className={cn("-mx-1 my-1 h-px bg-border pointer-events-none", className)} {...rest} />
     );
 }
 
 export function SelectScrollUpButton({ className, ...rest }: ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
     return (
-        <SelectPrimitive.ScrollUpButton
-            data-slot="select-scroll-up-button"
-            className={cn("z-10 flex cursor-default items-center justify-center bg-popover py-1 [&_svg:not([class*='size-'])]:size-4", className)}
-            {...rest}
-        >
+        <SelectPrimitive.ScrollUpButton data-slot="select-scroll-up-button" className={cn(scrollUpButtonClasses, className)} {...rest}>
             <ChevronUpIcon />
         </SelectPrimitive.ScrollUpButton>
     );
@@ -224,12 +204,10 @@ export function SelectScrollUpButton({ className, ...rest }: ComponentProps<type
 
 export function SelectScrollDownButton({ className, ...rest }: ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
     return (
-        <SelectPrimitive.ScrollDownButton
-            data-slot="select-scroll-down-button"
-            className={cn("z-10 flex cursor-default items-center justify-center bg-popover py-1 [&_svg:not([class*='size-'])]:size-4", className)}
-            {...rest}
-        >
+        <SelectPrimitive.ScrollDownButton data-slot="select-scroll-down-button" className={cn(scrollUpButtonClasses, className)} {...rest}>
             <ChevronDownIcon />
         </SelectPrimitive.ScrollDownButton>
     );
 }
+
+const scrollUpButtonClasses = "py-1 bg-popover [&_svg:not([class*='size-'])]:size-4 cursor-default z-10 flex items-center justify-center";

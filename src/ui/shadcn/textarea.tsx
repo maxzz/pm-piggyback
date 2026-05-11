@@ -2,16 +2,7 @@ import { type ComponentProps } from "react";
 import { cn } from "@/utils/classnames";
 
 export function Textarea({ className, ...rest }: ComponentProps<"textarea">) {
-    return (
-        <textarea
-            data-slot="textarea"
-            className={cn(
-                textareaClasses,
-                className
-            )}
-            {...rest}
-        />
-    );
+    return <textarea data-slot="textarea" className={cn(textareaClasses, className)} {...rest} />;
 }
 
 const textareaClasses = "\
@@ -20,6 +11,7 @@ text-xs \
 \
 bg-transparent \
 transition-colors \
+\
 placeholder:text-muted-foreground \
 \
 dark:bg-input/30 \

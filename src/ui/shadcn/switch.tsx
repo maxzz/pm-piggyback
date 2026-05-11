@@ -4,17 +4,15 @@ import { Switch as SwitchPrimitive } from "radix-ui";
 
 export function Switch({ className, size = "default", ...rest }: ComponentProps<typeof SwitchPrimitive.Root> & { size?: "sm" | "default"; }) {
     return (
-        <SwitchPrimitive.Root data-slot="switch" data-size={size} className={cn(rootClasses, className)} {...rest}>
+        <SwitchPrimitive.Root data-slot="switch" data-size={size} className={cn(switchClasses, className)} {...rest}>
             <SwitchPrimitive.Thumb data-slot="switch-thumb" className={thumbClasses} />
         </SwitchPrimitive.Root>
     );
 }
 
-const rootClasses = "\
+const switchClasses = "\
 peer group/switch shrink-0 relative \
 \
-border \
-border-transparent \
 transition-all \
 \
 after:absolute \
@@ -45,11 +43,14 @@ data-disabled:cursor-not-allowed \
 data-disabled:opacity-50 \
 \
 rounded-full \
+border \
+border-transparent \
 outline-none \
 inline-flex items-center";
 
 const thumbClasses = "\
 block \
+\
 bg-background \
 transition-transform \
 \
@@ -66,5 +67,4 @@ dark:data-unchecked:bg-foreground \
 \
 ring-0 \
 rounded-full \
-pointer-events-none \
-";
+pointer-events-none";

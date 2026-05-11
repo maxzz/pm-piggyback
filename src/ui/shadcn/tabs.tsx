@@ -9,7 +9,7 @@ export function Tabs({ className, orientation = "horizontal", ...rest }: Compone
         <TabsPrimitive.Root
             data-slot="tabs"
             data-orientation={orientation}
-            className={cn("group/tabs flex gap-2 data-horizontal:flex-col", className)}
+            className={cn("group/tabs flex data-horizontal:flex-col gap-2", className)}
             {...rest}
         />
     );
@@ -49,7 +49,7 @@ export function TabsList({ className, variant = "default", ...rest }: ComponentP
 
 export function TabsTrigger({ className, ...rest }: ComponentProps<typeof TabsPrimitive.Trigger>) {
     return (
-        <TabsPrimitive.Trigger data-slot="tabs-trigger" className={cn(tabsTriggerClasses, className)} {...rest} />
+        <TabsPrimitive.Trigger data-slot="tabs-trigger" className={cn(triggerClasses, className)} {...rest} />
     );
 }
 
@@ -59,10 +59,8 @@ export function TabsContent({ className, ...rest }: ComponentProps<typeof TabsPr
     );
 }
 
-const tabsTriggerClasses = "\
-relative flex-1 px-1.5 py-0.5 h-[calc(100%-1px)] \
-text-xs \
-font-medium \
+const triggerClasses = "\
+relative flex-1 px-1.5 py-0.5 h-[calc(100%-1px)] text-xs font-medium \
 whitespace-nowrap \
 \
 text-foreground/60 \
@@ -130,5 +128,4 @@ group-data-horizontal/tabs:after:h-0.5 \
 group-data-vertical/tabs:after:inset-y-0 \
 group-data-vertical/tabs:after:-right-1 \
 group-data-vertical/tabs:after:w-0.5 \
-group-data-[variant=line]/tabs-list:data-active:after:opacity-100 \
-";
+group-data-[variant=line]/tabs-list:data-active:after:opacity-100";
