@@ -13,7 +13,6 @@ px-2.5 py-1 w-full min-w-0 h-8 \
 text-xs \
 bg-transparent \
 transition-colors \
-outline-none \
 \
 placeholder:text-muted-foreground \
 \
@@ -44,6 +43,7 @@ file:font-medium \
 file:text-foreground \
 \
 rounded-lg \
+outline-none \
 border \
 border-input \
 ";
