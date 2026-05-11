@@ -68,7 +68,7 @@ export function DropdownMenuItem({ className, inset, variant = "default", ...res
 }
 
 const itemClasses = "\
-group/dropdown-menu-item relative px-1.5 py-1 text-sm \
+group/dropdown-menu-item relative px-1.5 py-1 text-xs \
 \
 focus:text-accent-foreground \
 focus:bg-accent \
@@ -112,7 +112,7 @@ export function DropdownMenuCheckboxItem({ className, children, checked, inset, 
 }
 
 const checkboxItemClasses = "\
-relative pl-1.5 pr-8 py-1 text-sm \
+relative pl-1.5 pr-8 py-1 text-xs \
 \
 focus:text-accent-foreground \
 focus:bg-accent \
@@ -152,7 +152,7 @@ export function DropdownMenuRadioItem({ className, children, inset, ...rest }: C
 }
 
 const radioItemClasses = "\
-relative pl-1.5 pr-8 py-1 text-sm \
+relative pl-1.5 pr-8 py-1 text-xs \
 \
 focus:text-accent-foreground \
 focus:bg-accent \
@@ -199,7 +199,7 @@ export function DropdownMenuSubTrigger({ className, inset, children, ...rest }: 
 }
 
 const subTriggerClasses = "\
-px-1.5 py-1 text-sm \
+px-1.5 py-1 text-xs \
 \
 focus:text-accent-foreground \
 focus:bg-accent \
