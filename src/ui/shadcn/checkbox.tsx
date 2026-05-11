@@ -4,9 +4,9 @@ import { cn } from "@/utils/classnames";
 import { CheckIcon } from "lucide-react";
 import { Checkbox as CheckboxPrimitive } from "radix-ui";
 
-export function Checkbox({ className, ...props }: ComponentProps<typeof CheckboxPrimitive.Root>) {
+export function Checkbox({ className, ...rest }: ComponentProps<typeof CheckboxPrimitive.Root>) {
     return (
-        <CheckboxPrimitive.Root data-slot="checkbox" className={cn(defaultCheckboxClasses, className)} {...props}>
+        <CheckboxPrimitive.Root data-slot="checkbox" className={cn(defaultCheckboxClasses, className)} {...rest}>
 
             <CheckboxPrimitive.Indicator data-slot="checkbox-indicator" className="grid place-content-center text-current transition-none [&>svg]:size-3.5">
                 <CheckIcon />
