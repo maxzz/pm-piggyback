@@ -29,8 +29,37 @@ export function DropdownMenuContent({ className, align = "start", sideOffset = 4
     );
 }
 
-const contentClasses = "z-50 max-h-(--radix-dropdown-menu-content-available-height) w-(--radix-dropdown-menu-trigger-width) min-w-32 origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:overflow-hidden data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95";
-
+const contentClasses = "z-50 \
+max-h-(--radix-dropdown-menu-content-available-height) \
+w-(--radix-dropdown-menu-trigger-width) \
+min-w-32 \
+origin-(--radix-dropdown-menu-content-transform-origin) \
+overflow-x-hidden \
+overflow-y-auto \
+rounded-lg \
+bg-popover \
+p-1 \
+text-popover-foreground \
+shadow-md \
+ring-1 \
+ring-foreground/10 \
+duration-100 \
+\
+data-[side=bottom]:slide-in-from-top-2 \
+data-[side=left]:slide-in-from-right-2 \
+data-[side=right]:slide-in-from-left-2 \
+data-[side=top]:slide-in-from-bottom-2 \
+\
+data-[state=closed]:overflow-hidden \
+\
+data-open:animate-in \
+data-open:fade-in-0 \
+data-open:zoom-in-95 \
+\
+data-closed:animate-out \
+data-closed:fade-out-0 \
+data-closed:zoom-out-95 \
+";
 
 export function DropdownMenuGroup({ ...rest }: ComponentProps<typeof DropdownMenuPrimitive.Group>) {
     return <DropdownMenuPrimitive.Group data-slot="dropdown-menu-group" {...rest} />;
@@ -40,7 +69,37 @@ export function DropdownMenuItem({ className, inset, variant = "default", ...res
     return <DropdownMenuPrimitive.Item data-slot="dropdown-menu-item" data-inset={inset} data-variant={variant} className={cn(itemClasses, className)} {...rest} />;
 }
 
-const itemClasses = "group/dropdown-menu-item relative flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive";
+const itemClasses = "group/dropdown-menu-item \
+relative \
+flex \
+cursor-default \
+items-center \
+gap-1.5 \
+rounded-md \
+px-1.5 \
+py-1 \
+text-sm \
+outline-hidden \
+select-none \
+focus:bg-accent \
+focus:text-accent-foreground \
+not-data-[variant=destructive]:focus:**:text-accent-foreground \
+\
+data-inset:pl-7 \
+data-[variant=destructive]:text-destructive \
+data-[variant=destructive]:focus:bg-destructive/10 \
+data-[variant=destructive]:focus:text-destructive \
+\
+data-[variant=destructive]:*:[svg]:text-destructive \
+dark:data-[variant=destructive]:focus:bg-destructive/20 \
+\
+data-disabled:pointer-events-none \
+data-disabled:opacity-50 \
+\
+[&_svg]:pointer-events-none \
+[&_svg]:shrink-0 \
+[&_svg:not([class*='size-'])]:size-4 \
+";
 
 export function DropdownMenuCheckboxItem({ className, children, checked, inset, ...rest }: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem> & { inset?: boolean; }) {
     return (
@@ -48,8 +107,7 @@ export function DropdownMenuCheckboxItem({ className, children, checked, inset, 
 
             <span data-slot="dropdown-menu-checkbox-item-indicator" className="pointer-events-none absolute right-2 flex items-center justify-center">
                 <DropdownMenuPrimitive.ItemIndicator>
-                    <CheckIcon
-                    />
+                    <CheckIcon />
                 </DropdownMenuPrimitive.ItemIndicator>
             </span>
 
@@ -58,7 +116,31 @@ export function DropdownMenuCheckboxItem({ className, children, checked, inset, 
     );
 }
 
-const checkboxItemClasses = "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4";
+const checkboxItemClasses = "relative \
+flex \
+cursor-default \
+items-center \
+gap-1.5 \
+rounded-md \
+py-1 \
+pr-8 \
+pl-1.5 \
+text-sm \
+outline-hidden \
+select-none \
+\
+focus:bg-accent \
+focus:text-accent-foreground \
+focus:**:text-accent-foreground \
+\
+data-inset:pl-7 \
+data-disabled:pointer-events-none \
+data-disabled:opacity-50 \
+\
+[&_svg]:pointer-events-none \
+[&_svg]:shrink-0 \
+[&_svg:not([class*='size-'])]:size-4 \
+";
 
 export function DropdownMenuRadioGroup({ ...rest }: ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
     return <DropdownMenuPrimitive.RadioGroup data-slot="dropdown-menu-radio-group" {...rest} />;
@@ -70,8 +152,7 @@ export function DropdownMenuRadioItem({ className, children, inset, ...rest }: C
 
             <span data-slot="dropdown-menu-radio-item-indicator" className="pointer-events-none absolute right-2 flex items-center justify-center">
                 <DropdownMenuPrimitive.ItemIndicator>
-                    <CheckIcon
-                    />
+                    <CheckIcon />
                 </DropdownMenuPrimitive.ItemIndicator>
             </span>
 
@@ -80,7 +161,31 @@ export function DropdownMenuRadioItem({ className, children, inset, ...rest }: C
     );
 }
 
-const radioItemClasses = "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4";
+const radioItemClasses = "relative \
+flex \
+cursor-default \
+items-center \
+gap-1.5 \
+rounded-md \
+py-1 \
+pr-8 \
+pl-1.5 \
+text-sm \
+outline-hidden \
+select-none \
+\
+focus:bg-accent \
+focus:text-accent-foreground \
+focus:**:text-accent-foreground \
+\
+data-inset:pl-7 \
+data-disabled:pointer-events-none \
+data-disabled:opacity-50 \
+\
+[&_svg]:pointer-events-none \
+[&_svg]:shrink-0 \
+[&_svg:not([class*='size-'])]:size-4 \
+";
 
 export function DropdownMenuLabel({ className, inset, ...rest }: ComponentProps<typeof DropdownMenuPrimitive.Label> & { inset?: boolean; }) {
     return <DropdownMenuPrimitive.Label data-slot="dropdown-menu-label" data-inset={inset} className={cn("px-1.5 py-1 text-xs font-medium text-muted-foreground data-inset:pl-7", className)} {...rest} />;
@@ -108,10 +213,58 @@ export function DropdownMenuSubTrigger({ className, inset, children, ...rest }: 
     );
 }
 
-const subTriggerClasses = "flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-7 data-open:bg-accent data-open:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4";
+const subTriggerClasses = "flex \
+cursor-default \
+items-center \
+gap-1.5 \
+rounded-md \
+px-1.5 \
+py-1 \
+text-sm \
+outline-hidden \
+select-none \
+\
+focus:bg-accent \
+focus:text-accent-foreground \
+\
+not-data-[variant=destructive]:focus:**:text-accent-foreground \
+\
+data-inset:pl-7 \
+data-open:bg-accent \
+data-open:text-accent-foreground \
+\
+[&_svg]:pointer-events-none \
+[&_svg]:shrink-0 \
+[&_svg:not([class*='size-'])]:size-4 \
+";
 
 export function DropdownMenuSubContent({ className, ...rest }: ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
     return <DropdownMenuPrimitive.SubContent data-slot="dropdown-menu-sub-content" className={cn(subContentClasses, className)} {...rest} />;
 }
 
-const subContentClasses = "z-50 min-w-24 origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-lg bg-popover p-1 text-popover-foreground shadow-lg ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95";
+const subContentClasses = "z-50 \
+min-w-24 \
+origin-(--radix-dropdown-menu-content-transform-origin) \
+overflow-hidden \
+rounded-lg \
+bg-popover \
+p-1 \
+text-popover-foreground \
+shadow-lg \
+ring-1 \
+ring-foreground/10 \
+duration-100 \
+\
+data-[side=bottom]:slide-in-from-top-2 \
+data-[side=left]:slide-in-from-right-2 \
+data-[side=right]:slide-in-from-left-2 \
+data-[side=top]:slide-in-from-bottom-2 \
+\
+data-open:animate-in \
+data-open:fade-in-0 \
+data-open:zoom-in-95 \
+\
+data-closed:animate-out \
+data-closed:fade-out-0 \
+data-closed:zoom-out-95 \
+";
