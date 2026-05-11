@@ -4,7 +4,7 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react";
 import { Menubar as MenubarPrimitive } from "radix-ui";
 
 export function Menubar({ className, ...rest }: ComponentProps<typeof MenubarPrimitive.Root>) {
-    return <MenubarPrimitive.Root data-slot="menubar" className={cn("flex h-8 items-center gap-0.5 rounded-lg border p-0.75", className)} {...rest} />;
+    return <MenubarPrimitive.Root data-slot="menubar" className={cn("p-0.75 h-8 rounded-lg border flex items-center gap-0.5", className)} {...rest} />;
 }
 
 export function MenubarMenu({ ...rest }: ComponentProps<typeof MenubarPrimitive.Menu>) {
@@ -27,7 +27,7 @@ export function MenubarTrigger({ className, ...rest }: ComponentProps<typeof Men
     return (
         <MenubarPrimitive.Trigger
             data-slot="menubar-trigger"
-            className={cn("flex items-center rounded-sm px-1.5 py-0.5 text-sm font-medium outline-hidden select-none hover:bg-muted aria-expanded:bg-muted", className)}
+            className={cn("px-1.5 py-0.5 text-xs font-medium outline-hidden hover:bg-muted aria-expanded:bg-muted rounded-sm select-none flex items-center", className)}
             {...rest}
         />
     );
@@ -41,23 +41,19 @@ export function MenubarContent({ className, align = "start", alignOffset = -4, s
                 align={align}
                 alignOffset={alignOffset}
                 sideOffset={sideOffset}
-                className={cn(menubarContentClasses, className)}
+                className={cn(contentClasses, className)}
                 {...rest}
             />
         </MenubarPortal>
     );
 }
 
-const menubarContentClasses = "\
-p-1 \
-min-w-36 \
-origin-(--radix-menubar-content-transform-origin) \
+const contentClasses = "\
+p-1 min-w-36 origin-(--radix-menubar-content-transform-origin) \
 \
-bg-popover \
 text-popover-foreground \
+bg-popover \
 duration-100 \
-ring-1 \
-ring-foreground/10 \
 \
 data-[side=bottom]:slide-in-from-top-2 \
 data-[side=left]:slide-in-from-right-2 \
@@ -68,6 +64,8 @@ data-open:animate-in \
 data-open:fade-in-0 \
 data-open:zoom-in-95 \
 \
+ring-1 \
+ring-foreground/10 \
 rounded-lg \
 shadow-md \
 overflow-hidden \
@@ -79,26 +77,26 @@ export function MenubarItem({ className, inset, variant = "default", ...rest }: 
             data-slot="menubar-item"
             data-inset={inset}
             data-variant={variant}
-            className={cn(menubarItemClasses, className)}
+            className={cn(itemClasses, className)}
             {...rest}
         />
     );
 }
 
-const menubarItemClasses = "\
-group/menubar-item relative px-1.5 py-1 \
-text-xs \
+const itemClasses = "\
+group/menubar-item relative px-1.5 py-1 text-xs \
 \
-focus:bg-accent \
 focus:text-accent-foreground \
-\
-not-data-[variant=destructive]:focus:**:text-accent-foreground \
+focus:bg-accent \
 \
 data-inset:pl-7 \
+\
 data-[variant=destructive]:text-destructive \
 data-[variant=destructive]:focus:bg-destructive/10 \
 data-[variant=destructive]:focus:text-destructive \
 data-[variant=destructive]:*:[svg]:text-destructive! \
+\
+not-data-[variant=destructive]:focus:**:text-accent-foreground \
 \
 dark:data-[variant=destructive]:focus:bg-destructive/20 \
 data-disabled:pointer-events-none data-disabled:opacity-50 \
@@ -119,11 +117,11 @@ export function MenubarCheckboxItem({ className, children, checked, inset, ...re
         <MenubarPrimitive.CheckboxItem
             data-slot="menubar-checkbox-item"
             data-inset={inset}
-            className={cn(menubarCheckboxItemClasses, className)}
+            className={cn(checkboxItemClasses, className)}
             checked={checked}
             {...rest}
         >
-            <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
+            <span className="absolute left-1.5 size-4 [&_svg:not([class*='size-'])]:size-4 pointer-events-none flex items-center justify-center">
                 <MenubarPrimitive.ItemIndicator>
                     <CheckIcon
                     />
@@ -134,12 +132,12 @@ export function MenubarCheckboxItem({ className, children, checked, inset, ...re
     );
 }
 
-const menubarCheckboxItemClasses = "\
+const checkboxItemClasses = "\
 relative pl-7 pr-1.5 py-1 text-xs \
 \
-focus:bg-accent \
 focus:text-accent-foreground \
 focus:**:text-accent-foreground \
+focus:bg-accent \
 \
 data-inset:pl-7 \
 data-disabled:pointer-events-none \
@@ -158,10 +156,10 @@ export function MenubarRadioItem({ className, children, inset, ...rest }: Compon
         <MenubarPrimitive.RadioItem
             data-slot="menubar-radio-item"
             data-inset={inset}
-            className={cn(menubarRadioItemClasses, className)}
+            className={cn(radioItemClasses, className)}
             {...rest}
         >
-            <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
+            <span className="absolute left-1.5 size-4 [&_svg:not([class*='size-'])]:size-4 pointer-events-none flex items-center justify-center">
                 <MenubarPrimitive.ItemIndicator>
                     <CheckIcon
                     />
@@ -172,16 +170,16 @@ export function MenubarRadioItem({ className, children, inset, ...rest }: Compon
     );
 }
 
-const menubarRadioItemClasses = "\
+const radioItemClasses = "\
 relative pl-7 pr-1.5 py-1 text-xs \
 \
 data-inset:pl-7 \
 data-disabled:pointer-events-none \
 data-disabled:opacity-50 \
 \
-focus:bg-accent \
 focus:text-accent-foreground \
 focus:**:text-accent-foreground \
+focus:bg-accent \
 \
 [&_svg]:shrink-0 \
 [&_svg]:pointer-events-none \
@@ -198,7 +196,7 @@ export function MenubarLabel({ className, inset, ...rest }: ComponentProps<typeo
         <MenubarPrimitive.Label
             data-slot="menubar-label"
             data-inset={inset}
-            className={cn("px-1.5 py-1 text-sm font-medium data-inset:pl-7", className)}
+            className={cn("px-1.5 py-1 text-xs font-medium data-inset:pl-7", className)}
             {...rest}
         />
     );
@@ -215,13 +213,7 @@ export function MenubarSeparator({ className, ...rest }: ComponentProps<typeof M
 }
 
 export function MenubarShortcut({ className, ...rest }: ComponentProps<"span">) {
-    return (
-        <span
-            data-slot="menubar-shortcut"
-            className={cn("ml-auto text-xs tracking-widest text-muted-foreground group-focus/menubar-item:text-accent-foreground", className)}
-            {...rest}
-        />
-    );
+    return <span data-slot="menubar-shortcut" className={cn("ml-auto text-xs tracking-widest text-muted-foreground group-focus/menubar-item:text-accent-foreground", className)} {...rest} />;
 }
 
 export function MenubarSub({ ...rest }: ComponentProps<typeof MenubarPrimitive.Sub>) {
@@ -230,27 +222,23 @@ export function MenubarSub({ ...rest }: ComponentProps<typeof MenubarPrimitive.S
 
 export function MenubarSubTrigger({ className, inset, children, ...rest }: ComponentProps<typeof MenubarPrimitive.SubTrigger> & { inset?: boolean; }) {
     return (
-        <MenubarPrimitive.SubTrigger
-            data-slot="menubar-sub-trigger"
-            data-inset={inset}
-            className={cn(menubarSubTriggerClasses, className)}
-            {...rest}
-        >
+        <MenubarPrimitive.SubTrigger data-slot="menubar-sub-trigger" data-inset={inset} className={cn(subTriggerClasses, className)} {...rest}>
             {children}
+
             <ChevronRightIcon className="ml-auto size-4" />
         </MenubarPrimitive.SubTrigger>
     );
 }
 
-const menubarSubTriggerClasses = "\
+const subTriggerClasses = "\
 px-1.5 py-1 text-xs \
 \
 data-inset:pl-7 \
-data-open:bg-accent \
 data-open:text-accent-foreground \
+data-open:bg-accent \
 \
-focus:bg-accent \
 focus:text-accent-foreground \
+focus:bg-accent \
 \
 [&_svg:not([class*='size-'])]:size-4 \
 \
@@ -261,23 +249,14 @@ cursor-default \
 flex items-center gap-1.5";
 
 export function MenubarSubContent({ className, ...rest }: ComponentProps<typeof MenubarPrimitive.SubContent>) {
-    return (
-        <MenubarPrimitive.SubContent
-            data-slot="menubar-sub-content"
-            className={cn(menubarSubContentClasses, className)}
-            {...rest}
-        />
-    );
+    return <MenubarPrimitive.SubContent data-slot="menubar-sub-content" className={cn(subContentClasses, className)} {...rest} />;
 }
 
-const menubarSubContentClasses = "\
-p-1 min-w-32 \
+const subContentClasses = "\
+p-1 min-w-32 origin-(--radix-menubar-content-transform-origin) \
 \
-origin-(--radix-menubar-content-transform-origin) \
 text-popover-foreground \
 bg-popover \
-ring-1 \
-ring-foreground/10 \
 duration-100 \
 \
 data-[side=bottom]:slide-in-from-top-2 \
@@ -295,5 +274,7 @@ data-closed:zoom-out-95 \
 \
 rounded-lg \
 shadow-lg \
+ring-1 \
+ring-foreground/10 \
 overflow-hidden \
 z-50";
