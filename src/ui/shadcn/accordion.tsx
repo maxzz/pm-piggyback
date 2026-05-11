@@ -18,7 +18,7 @@ export function AccordionItem({ className, ...rest }: ComponentProps<typeof Acco
 export function AccordionTrigger({ className, children, showIcon = true, ...rest }: ComponentProps<typeof AccordionPrimitive.Trigger> & { showIcon?: boolean; }) {
     return (
         <AccordionPrimitive.Header className="flex">
-            <AccordionPrimitive.Trigger data-slot="accordion-trigger" className={cn(accordionTriggerClasses, className)} {...rest}>
+            <AccordionPrimitive.Trigger data-slot="accordion-trigger" className={cn(triggerClasses, className)} {...rest}>
 
                 {children}
 
@@ -39,20 +39,22 @@ export function AccordionContent({ className, children, ...rest }: ComponentProp
             className="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
             {...rest}
         >
-            <div className={cn(accordionContentClasses, className)}>
+            <div className={cn(contentClasses, className)}>
                 {children}
             </div>
         </AccordionPrimitive.Content>
     );
 }
 
-const accordionTriggerClasses = "group/accordion-trigger \
+const triggerClasses = "group/accordion-trigger \
 relative flex-1 py-2.5 \
+\
 font-medium \
 text-xs \
 text-left \
+\
 transition-all \
-outline-none \
+\
 hover:underline \
 \
 focus-visible:border-ring \
@@ -68,12 +70,13 @@ disabled:opacity-50 \
 **:data-[slot=accordion-trigger-icon]:text-muted-foreground \
 \
 rounded-lg \
+outline-none \
 border border-transparent \
 flex items-start justify-between";
 
-const accordionContentClasses = "\
-pt-0 pb-2.5 \
-h-(--radix-accordion-content-height) \
+const contentClasses = "\
+pt-0 pb-2.5 h-(--radix-accordion-content-height) \
+\
 [&_a]:underline \
 [&_a]:underline-offset-3 \
 [&_a]:hover:text-foreground \
