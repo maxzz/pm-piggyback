@@ -37,7 +37,7 @@ border border-transparent \
 bg-clip-padding \
 inline-flex items-center justify-center";
 
-const buttonVariantsClasses = cva(defaultButtonClasses, {
+export const buttonVariantsClasses = cva(defaultButtonClasses, {
     variants: {
         variant: {
             default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
@@ -64,7 +64,7 @@ const buttonVariantsClasses = cva(defaultButtonClasses, {
     },
 });
 
-function Button({ className, variant = "default", size = "default", asChild = false, ...props }: ComponentProps<"button"> & VariantProps<typeof buttonVariantsClasses> & { asChild?: boolean; }) {
+export function Button({ className, variant = "default", size = "default", asChild = false, ...props }: ComponentProps<"button"> & VariantProps<typeof buttonVariantsClasses> & { asChild?: boolean; }) {
     const Comp = asChild ? Slot.Root : "button";
 
     return (
@@ -77,5 +77,3 @@ function Button({ className, variant = "default", size = "default", asChild = fa
         />
     );
 }
-
-export { Button, buttonVariantsClasses as buttonVariants };
