@@ -7,68 +7,60 @@ import { Input } from "@/ui/shadcn/input";
 import { Textarea } from "@/ui/shadcn/textarea";
 
 export function InputGroup({ className, ...props }: ComponentProps<"div">) {
-    return (
-        <div
-            data-slot="input-group"
-            role="group"
-            className={cn(inputGroupClasses, className)}
-            {...props}
-        />
-    );
+    return <div data-slot="input-group" role="group" className={cn(inputGroupClasses, className)} {...props} />;
 }
 
 const inputGroupClasses = "\
-group/input-group \
-relative \
-flex \
-h-8 \
-w-full \
-min-w-0 \
-items-center \
-rounded-lg \
-border \
+group/input-group relative w-full min-w-0 h-8 \
+\
 border-input \
 transition-colors \
-outline-none \
+\
 in-data-[slot=combobox-content]:focus-within:border-inherit \
 in-data-[slot=combobox-content]:focus-within:ring-0 \
+\
 has-disabled:bg-input/50 \
 has-disabled:opacity-50 \
+\
 has-[[data-slot=input-group-control]:focus-visible]:border-ring \
 has-[[data-slot=input-group-control]:focus-visible]:ring-3 \
 has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 \
 has-[[data-slot][aria-invalid=true]]:border-destructive \
 has-[[data-slot][aria-invalid=true]]:ring-3 \
 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 \
+\
 has-[>[data-align=block-end]]:h-auto \
 has-[>[data-align=block-end]]:flex-col \
 has-[>[data-align=block-start]]:h-auto \
 has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto \
+\
 dark:bg-input/30 \
 dark:has-disabled:bg-input/80 \
 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 \
+\
 has-[>[data-align=block-end]]:[&>input]:pt-3 \
 has-[>[data-align=block-start]]:[&>input]:pb-3 \
 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 \
 has-[>[data-align=inline-start]]:[&>input]:pl-1.5 \
-";
+\
+border \
+rounded-lg \
+outline-none \
+flex items-center";
 
 const defaultClasses = "\
-flex \
-h-auto \
-cursor-text \
-items-center \
-justify-center \
-gap-2 \
-py-1.5 \
-text-sm \
-font-medium \
+py-1.5 h-auto text-sm font-medium \
+\
 text-muted-foreground \
-select-none \
+\
 group-data-[disabled=true]/input-group:opacity-50 \
+\
 [&>kbd]:rounded-[calc(var(--radius)-5px)] \
 [&>svg:not([class*='size-'])]:size-4 \
-";
+\
+cursor-text \
+select-none \
+flex items-center justify-center gap-2";
 
 const inputGroupAddonVariantsClasses = cva(defaultClasses, {
     variants: {
@@ -102,13 +94,13 @@ export function InputGroupAddon({ className, align = "inline-start", ...props }:
     );
 }
 
-const inputGroupButtonVariantsClasses = cva("flex items-center gap-2 text-sm shadow-none", {
+const inputGroupButtonVariantsClasses = cva("text-sm shadow-none flex items-center gap-2", {
     variants: {
         size: {
-            xs: "h-6 gap-1 rounded-[calc(var(--radius)-3px)] px-1.5 [&>svg:not([class*='size-'])]:size-3.5",
+            xs: "px-1.5 h-6 rounded-[calc(var(--radius)-3px)] [&>svg:not([class*='size-'])]:size-3.5 gap-1",
             sm: "",
-            "icon-xs": "size-6 rounded-[calc(var(--radius)-3px)] p-0 has-[>svg]:p-0",
-            "icon-sm": "size-8 p-0 has-[>svg]:p-0",
+            "icon-xs": "p-0 size-6 rounded-[calc(var(--radius)-3px)] has-[>svg]:p-0",
+            "icon-sm": "p-0 size-8 has-[>svg]:p-0",
         },
     },
     defaultVariants: {
@@ -129,66 +121,46 @@ export function InputGroupButton({ className, type = "button", variant = "ghost"
 }
 
 export function InputGroupText({ className, ...props }: ComponentProps<"span">) {
-    return (
-        <span
-            className={cn(
-                "flex items-center gap-2 text-sm text-muted-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
-                className
-            )}
-            {...props}
-        />
-    );
+    return <span className={cn("text-sm text-muted-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none flex items-center gap-2", className)} {...props} />;
 }
 
 export function InputGroupInput({ className, ...props }: ComponentProps<"input">) {
-    return (
-        <Input
-            data-slot="input-group-control"
-            className={cn(inputClasses, className)}
-            {...props}
-        />
-    );
+    return <Input data-slot="input-group-control" className={cn(inputClasses, className)} {...props} />;
 }
 
 const inputClasses = "\
 flex-1 \
-rounded-none \
-border-0 \
+\
 bg-transparent \
-shadow-none \
-ring-0 \
+\
 focus-visible:ring-0 \
 disabled:bg-transparent \
 aria-invalid:ring-0 \
+\
 dark:bg-transparent \
 dark:disabled:bg-transparent \
-";
+\
+border-0 \
+ring-0 \
+rounded-none shadow-none";
 
 export function InputGroupTextarea({ className, ...props }: ComponentProps<"textarea">) {
-    return (
-        <Textarea
-            data-slot="input-group-control"
-            className={cn(
-                textareaClasses,
-                className
-            )}
-            {...props}
-        />
-    );
+    return <Textarea data-slot="input-group-control" className={cn(textareaClasses, className)} {...props} />;
 }
 
 const textareaClasses = "\
-flex-1 \
-resize-none \
-rounded-none \
-border-0 \
+flex-1 py-2 \
+\
 bg-transparent \
-py-2 \
-shadow-none \
-ring-0 \
+\
 focus-visible:ring-0 \
 disabled:bg-transparent \
 aria-invalid:ring-0 \
+\
 dark:bg-transparent \
 dark:disabled:bg-transparent \
-";
+\
+resize-none \
+border-0 \
+ring-0 \
+rounded-none shadow-none";

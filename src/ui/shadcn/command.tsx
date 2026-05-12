@@ -85,15 +85,17 @@ export function CommandGroup({ className, ...rest }: ComponentProps<typeof Comma
 }
 
 const groupClasses = "\
-overflow-hidden \
 p-1 \
+\
 text-foreground \
+\
 **:[[cmdk-group-heading]]:px-2 \
 **:[[cmdk-group-heading]]:py-1.5 \
 **:[[cmdk-group-heading]]:text-xs \
 **:[[cmdk-group-heading]]:font-medium \
 **:[[cmdk-group-heading]]:text-muted-foreground \
-";
+\
+overflow-hidden";
 
 export function CommandSeparator({ className, ...rest }: ComponentProps<typeof CommandPrimitive.Separator>) {
     return (
@@ -122,28 +124,26 @@ export function CommandItem({ className, children, ...rest }: ComponentProps<typ
 }
 
 const itemClasses = "\
-group/command-item \
-relative \
-flex \
-cursor-default \
-items-center \
-gap-2 \
-rounded-sm \
-px-2 \
-py-1.5 \
-text-sm \
-outline-hidden \
-select-none \
+group/command-item relative px-2 py-1.5 text-sm \
+\
 in-data-[slot=dialog-content]:rounded-lg! \
+\
 data-[disabled=true]:pointer-events-none \
 data-[disabled=true]:opacity-50 \
 data-selected:bg-muted \
 data-selected:text-foreground \
+\
 [&_svg]:pointer-events-none \
 [&_svg]:shrink-0 \
 [&_svg:not([class*='size-'])]:size-4 \
+\
 data-selected:*:[svg]:text-foreground \
-";
+\
+outline-hidden \
+rounded-sm \
+select-none \
+cursor-default \
+flex items-center gap-2";
 
 export function CommandShortcut({ className, ...rest }: ComponentProps<"span">) {
     return (

@@ -40,31 +40,32 @@ export function ContextMenuContent({ className, ...rest }: ComponentProps<typeof
 }
 
 const contentClasses = "\
-z-50 \
-max-h-(--radix-context-menu-content-available-height) \
-min-w-36 \
-origin-(--radix-context-menu-content-transform-origin) \
-overflow-x-hidden \
-overflow-y-auto \
-rounded-lg \
-bg-popover \
-p-1 \
+p-1 min-w-36 max-h-(--radix-context-menu-content-available-height) origin-(--radix-context-menu-content-transform-origin) \
+\
 text-popover-foreground \
-shadow-md \
-ring-1 \
-ring-foreground/10 \
+bg-popover \
 duration-100 \
+\
 data-[side=bottom]:slide-in-from-top-2 \
 data-[side=left]:slide-in-from-right-2 \
 data-[side=right]:slide-in-from-left-2 \
 data-[side=top]:slide-in-from-bottom-2 \
+\
 data-open:animate-in \
 data-open:fade-in-0 \
 data-open:zoom-in-95 \
+\
 data-closed:animate-out \
 data-closed:fade-out-0 \
 data-closed:zoom-out-95 \
-";
+\
+ring-1 \
+ring-foreground/10 \
+rounded-lg \
+shadow-md \
+overflow-x-hidden \
+overflow-y-auto \
+z-50";
 
 export function ContextMenuItem({ className, inset, variant = "default", ...rest }: ComponentProps<typeof ContextMenuPrimitive.Item> & { inset?: boolean; variant?: "default" | "destructive"; }) {
     return (
@@ -79,32 +80,32 @@ export function ContextMenuItem({ className, inset, variant = "default", ...rest
 }
 
 const itemClasses = "\
-group/context-menu-item \
-relative \
-flex \
-cursor-default \
-items-center \
-gap-1.5 \
-rounded-md \
-px-1.5 \
-py-1 \
-text-sm \
-outline-hidden \
-select-none \
-focus:bg-accent \
+group/context-menu-item relative px-1.5 py-1 text-sm \
+\
 focus:text-accent-foreground \
+focus:bg-accent \
+\
 data-inset:pl-7 \
 data-[variant=destructive]:text-destructive \
 data-[variant=destructive]:focus:bg-destructive/10 \
 data-[variant=destructive]:focus:text-destructive \
+\
 dark:data-[variant=destructive]:focus:bg-destructive/20 \
 data-disabled:pointer-events-none data-disabled:opacity-50 \
+\
 [&_svg]:pointer-events-none \
 [&_svg]:shrink-0 \
 [&_svg:not([class*='size-'])]:size-4 \
+\
 focus:*:[svg]:text-accent-foreground \
+\
 data-[variant=destructive]:*:[svg]:text-destructive \
-";
+\
+rounded-md \
+outline-hidden \
+cursor-default \
+select-none \
+flex items-center gap-1.5";
 
 export function ContextMenuSubTrigger({ className, inset, children, ...rest }: ComponentProps<typeof ContextMenuPrimitive.SubTrigger> & { inset?: boolean; }) {
     return (
@@ -121,25 +122,24 @@ export function ContextMenuSubTrigger({ className, inset, children, ...rest }: C
 }
 
 const subTriggerClasses = "\
-flex \
-cursor-default \
-items-center \
-gap-1.5 \
-rounded-md \
-px-1.5 \
-py-1 \
-text-sm \
-outline-hidden \
-select-none \
-focus:bg-accent \
+px-1.5 py-1 text-sm \
+\
 focus:text-accent-foreground \
+focus:bg-accent \
+\
 data-inset:pl-7 \
 data-open:bg-accent \
 data-open:text-accent-foreground \
+\
 [&_svg]:pointer-events-none \
 [&_svg]:shrink-0 \
 [&_svg:not([class*='size-'])]:size-4 \
-";
+\
+rounded-md \
+outline-hidden \
+select-none \
+cursor-default \
+flex items-center gap-1.5";
 
 export function ContextMenuSubContent({ className, ...rest }: ComponentProps<typeof ContextMenuPrimitive.SubContent>) {
     return (
@@ -152,28 +152,30 @@ export function ContextMenuSubContent({ className, ...rest }: ComponentProps<typ
 }
 
 const subContentClasses = "\
-z-50 \
-min-w-32 \
-origin-(--radix-context-menu-content-transform-origin) \
-overflow-hidden \
-rounded-lg \
-border \
-bg-popover \
-p-1 \
+p-1 min-w-32 origin-(--radix-context-menu-content-transform-origin) \
+\
 text-popover-foreground \
-shadow-lg \
+bg-popover \
 duration-100 \
+\
 data-[side=bottom]:slide-in-from-top-2 \
 data-[side=left]:slide-in-from-right-2 \
 data-[side=right]:slide-in-from-left-2 \
 data-[side=top]:slide-in-from-bottom-2 \
+\
 data-open:animate-in \
 data-open:fade-in-0 \
 data-open:zoom-in-95 \
+\
 data-closed:animate-out \
 data-closed:fade-out-0 \
 data-closed:zoom-out-95 \
-";
+\
+border \
+rounded-lg \
+shadow-lg \
+overflow-hidden \
+z-50";
 
 export function ContextMenuCheckboxItem({ className, children, checked, inset, ...rest }: ComponentProps<typeof ContextMenuPrimitive.CheckboxItem> & { inset?: boolean; }) {
     return (
@@ -195,27 +197,24 @@ export function ContextMenuCheckboxItem({ className, children, checked, inset, .
 }
 
 const checkboxItemClasses = "\
-relative \
-flex \
-cursor-default \
-items-center \
-gap-1.5 \
-rounded-md \
-py-1 \
-pr-8 \
-pl-1.5 \
-text-sm \
-outline-hidden \
-select-none \
+relative pr-8 pl-1.5 py-1 text-sm \
+\
 focus:bg-accent \
 focus:text-accent-foreground \
+\
 data-inset:pl-7 \
 data-disabled:pointer-events-none \
 data-disabled:opacity-50 \
+\
 [&_svg]:pointer-events-none \
 [&_svg]:shrink-0 \
 [&_svg:not([class*='size-'])]:size-4 \
-";
+\
+outline-hidden \
+rounded-md \
+cursor-default \
+select-none \
+flex items-center gap-1.5";
 
 export function ContextMenuRadioItem({ className, children, inset, ...rest }: ComponentProps<typeof ContextMenuPrimitive.RadioItem> & { inset?: boolean; }) {
     return (
@@ -236,27 +235,26 @@ export function ContextMenuRadioItem({ className, children, inset, ...rest }: Co
 }
 
 const radioItemClasses = "\
-relative \
-flex \
-cursor-default \
-items-center \
-gap-1.5 \
-rounded-md \
-py-1 \
-pr-8 \
-pl-1.5 \
+relative pr-8 pl-1.5 py-1 \
+\
 text-sm \
-outline-hidden \
-select-none \
+\
 focus:bg-accent \
 focus:text-accent-foreground \
+\
 data-inset:pl-7 \
 data-disabled:pointer-events-none \
 data-disabled:opacity-50 \
+\
 [&_svg]:pointer-events-none \
 [&_svg]:shrink-0 \
 [&_svg:not([class*='size-'])]:size-4 \
-";
+\
+outline-hidden \
+rounded-md \
+select-none \
+cursor-default \
+flex items-center gap-1.5";
 
 export function ContextMenuLabel({ className, inset, ...rest }: ComponentProps<typeof ContextMenuPrimitive.Label> & { inset?: boolean; }) {
     return (
