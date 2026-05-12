@@ -46,6 +46,7 @@ export function CommandInput({ className, ...rest }: ComponentProps<typeof Comma
                     className={cn("w-full text-sm disabled:opacity-50 disabled:cursor-not-allowed outline-hidden", className)}
                     {...rest}
                 />
+
                 <InputGroupAddon>
                     <SearchIcon className="shrink-0 size-4 opacity-50" />
                 </InputGroupAddon>
@@ -65,23 +66,11 @@ export function CommandList({ className, ...rest }: ComponentProps<typeof Comman
 }
 
 export function CommandEmpty({ className, ...rest }: ComponentProps<typeof CommandPrimitive.Empty>) {
-    return (
-        <CommandPrimitive.Empty
-            data-slot="command-empty"
-            className={cn("py-6 text-sm text-center", className)}
-            {...rest}
-        />
-    );
+    return <CommandPrimitive.Empty data-slot="command-empty" className={cn("py-6 text-sm text-center", className)} {...rest} />;
 }
 
 export function CommandGroup({ className, ...rest }: ComponentProps<typeof CommandPrimitive.Group>) {
-    return (
-        <CommandPrimitive.Group
-            data-slot="command-group"
-            className={cn(groupClasses, className)}
-            {...rest}
-        />
-    );
+    return <CommandPrimitive.Group data-slot="command-group" className={cn(groupClasses, className)} {...rest} />;
 }
 
 const groupClasses = "\
@@ -98,26 +87,14 @@ text-foreground \
 overflow-hidden";
 
 export function CommandSeparator({ className, ...rest }: ComponentProps<typeof CommandPrimitive.Separator>) {
-    return (
-        <CommandPrimitive.Separator
-            data-slot="command-separator"
-            className={cn("-mx-1 h-px bg-border", className)}
-            {...rest}
-        />
-    );
+    return <CommandPrimitive.Separator data-slot="command-separator" className={cn("-mx-1 h-px bg-border", className)} {...rest} />;
 }
 
 export function CommandItem({ className, children, ...rest }: ComponentProps<typeof CommandPrimitive.Item>) {
     return (
-        <CommandPrimitive.Item
-            data-slot="command-item"
-            className={cn(
-                itemClasses,
-                className
-            )}
-            {...rest}
-        >
+        <CommandPrimitive.Item data-slot="command-item" className={cn(itemClasses, className)} {...rest} >
             {children}
+
             <CheckIcon className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
         </CommandPrimitive.Item>
     );
